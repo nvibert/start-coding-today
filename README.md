@@ -20,7 +20,8 @@ That's it. No coding experience required. No need to get access to a vCenter as 
 * Run a PowerCLI script against a vCenter
 * Run API calls with Postman against a vCenter
 * Execute an API call with Python against a vCenter
-* Deploy VMware resources with Terraform 
+* Deploy VMware resources with Terraform
+
 
 # Session Structure
 
