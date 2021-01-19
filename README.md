@@ -22,8 +22,6 @@ That's it. No coding experience required. No need to get access to a vCenter as 
 * Execute an API call with Python against a vCenter
 * Deploy VMware resources with Terraform
 
-This markdown is strange. 
-
 ## Session Structure
 
 ### Part 1 - Introduction
