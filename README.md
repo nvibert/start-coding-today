@@ -4,17 +4,17 @@
 Co-presented by Patrick Kremer and Nico Vibert.
 This session will be presented at the internal VMware conference TechSummit.
 
-# Objectives
+## Objectives
 
-- In 25 minutes, attendees will be able to learn and practice coding.
+In 25 minutes, attendees will be able to learn and practice coding.
 
-# Requirements
+## Requirements
 
-- A browser with Internet access.
+A browser with Internet access.
 
 That's it. No coding experience required. No need to get access to a vCenter as a simulated vCenter will be provided.
 
-# What the attendee will do during the session:
+## What the attendee will do during the session:
 
 * Learn the basic concepts behind REST APIs
 * Run a PowerCLI script against a vCenter
@@ -23,26 +23,26 @@ That's it. No coding experience required. No need to get access to a vCenter as 
 * Deploy VMware resources with Terraform
 
 
-# Session Structure
+## Session Structure
 
-## Part 1 - Introduction
+### Part 1 - Introduction
 
 Welcome to the session. This session is for anyone who's never had the confidence or the motivation to learn to code. 
 It's hard to get started with coding without a use case, a mentor, an environment you can learn and a safe place where there's no stupid questions.
 
 This is a short session and this session is more of an introduction to coding for folks who have a background as infrastructure and virtualization administrators and would like to understand the 'art of the possible'. 
 
-## Part 2 - APIs
+### Part 2 - APIs
 
 // brief introduction to REST APIs
 // CRUD
 
 If you are on the live VMware training, access a virtual desktop with the 
-## Part 3a - Desktop Access
+### Part 3a - Desktop Access
 
-## Part 3b - Preparation
+### Part 3b - Preparation
 
-## Part 4 - PowerCLI
+### Part 4 - PowerCLI
 
 PowerCLI is one of the most common tools to automate tasks against a VMware environment. PowerCLI abstracts the API calls by providing a command-line interface tool that is self-explanatory.
 
@@ -66,6 +66,6 @@ As you can see, the script will do the following:
 
 While that's fine. 
 
-## Part 5 - 
+### Part 5 - 
 
 PowerCLI is one of the most common tools to automate tasks against a VMware environment. PowerCLI abstracts the API calls by providing a command-line interface tool that is easy to learn and to use.
