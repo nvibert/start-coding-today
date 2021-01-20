@@ -47,7 +47,7 @@ PowerCLI is one of the most common tools to automate tasks against a VMware envi
 
 Open the PowerShell windows and run the following command:
 
-    New-VM blablablablab
+    New-Folder blablablablab
     New-Tag blablablabla
 
 Great! You've just used some scripts to create vSphere resources over APIs. Yes, PowerCLI just executes some API calls under the hood but a lot of the complexity was hidden from you.
@@ -63,7 +63,7 @@ As you can see, the script will do the following:
     - create that
     - run some checks
 
-While that's fine. 
+While that's fine
 
 ### Part 5 - 
 
