@@ -36,8 +36,12 @@ This is a short session and this session is more of an introduction to coding fo
 // brief introduction to REST APIs
 // CRUD
 
-If you are on the live VMware training, access a virtual desktop with the 
+If you are on the live VMware training, access your virtual desktop
 ### Part 3a - Desktop Access
+
+Access your VDI session at this [URL](https://desktop.vmc.ninja)
+
+Usernames and passwords will be provided in the Zoom session.
 
 ### Part 3b - Preparation
 
