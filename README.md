@@ -80,13 +80,11 @@ Now you can refer to this variable in your next command:
 
     New-Folder "MyFolder" -Location $VMFolder
 
-New-Tag blablablabla
-
 Great! You've just used some scripts to create vSphere resources over APIs. Yes, PowerCLI just executes some API calls under the hood but a lot of the complexity was hidden from you.
 
 You can combine multiple PowerCLI commands into a single PowerShell script and the script will run everything for you. 
 
-Navigate to the Folder /blablablabla and open the file blablablabla.ps1
+Navigate to the Folder /blablablabla and open the file to_be_confirmed.ps1
 
 As you can see, the script will do the following:
 
@@ -95,8 +93,33 @@ As you can see, the script will do the following:
     - create that
     - run some checks
 
-While that's fine
 
-### Part 5 - 
 
-PowerCLI is one of the most common tools to automate tasks against a VMware environment. PowerCLI abstracts the API calls by providing a command-line interface tool that is easy to learn and to use.
+### Part 5 - APIs
+
+PowerCLI is very easy to use as you can see. But what PowerCLI only does is making API calls under the hood.
+
+You will find easier to understand automation by building some understanding of API architectures.
+
+Typically, API calls run a CRUD Action: Create, Read, Update or Delete.
+
+For example:
+- Create a VM
+- Check the items of a content library
+- Update the vSAN storage policy on a VM
+- Remove a NSX network
+
+Most API requests are made through a HTML request, which would be:
+
+- PUT   ===== CREATE
+- GET   ===== READ
+- PATCH  ==== UPDATE
+- DELETE ==== DELETE
+
+When you browse any page on the web, you just make a HTTP GET request to get the contents of a webpage.
+
+It's the same if you want to get the contents of a vCenter, it will just be a GET call.
+
+When you submit a form online, you just make a HTTP POST request to submit your details.
+
+It's same when you want to create a network with NSX over the APIs: you just make a HTTP POST Call, with the details about your network (subnet, mask, DHCP settings) in the body of the packet.
