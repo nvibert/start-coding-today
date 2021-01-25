@@ -51,8 +51,36 @@ PowerCLI is one of the most common tools to automate tasks against a VMware envi
 
 Open the PowerShell windows and run the following command:
 
-    New-Folder blablablablab
-    New-Tag blablablabla
+    Connect-VIServer localhost -port 8989 -User Foo -Password Bar
+    
+You are now connected to a simulated vCenter (we used a tool called govc and vcsim to save the configuration of a real vCenter and restore it).
+
+Now that you are connected, you can run multiple PowerCLI commands, such as:
+
+    Get-VMHost
+
+    Get-Folder
+
+    Get-Datacenter
+
+    Get-Datastore
+
+
+You can run the following command to understand why cmdlets are supported:
+`
+Get-Command -Module *VMware*
+`
+
+As you are using a simulated vCenter, not all the commands will work. 
+But some do and we can even create new items in the simulated vCenter. Let's try to create a new folder inside an existing folder. One way to do this is to create a PowerShell variable, using the '$' prefix.
+
+    $VMFolder = Get-Folder -Type VM
+
+Now you can refer to this variable in your next command:
+
+    New-Folder "MyFolder" -Location $VMFolder
+
+New-Tag blablablabla
 
 Great! You've just used some scripts to create vSphere resources over APIs. Yes, PowerCLI just executes some API calls under the hood but a lot of the complexity was hidden from you.
 
