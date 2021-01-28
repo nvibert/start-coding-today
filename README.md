@@ -37,13 +37,24 @@ This is a short session and this session is more of an introduction to coding fo
 // CRUD
 
 If you are on the live VMware training, access your virtual desktop
-### Part 3a - Desktop Access
+### Part 3a - Live - Desktop Access
 
 Access your VDI session at this [URL](https://desktop.vmc.ninja)
 
 Usernames and passwords will be provided in the Zoom session.
 
-### Part 3b - Preparation
+### Part 3b - Offline with vcsim
+
+Clone this GitHub repo to your machine. 
+It will include the vcsim.
+
+    - Install Postman
+    - Install Go
+    - Install PowerShell if you don't have it already.
+
+### Part 3c - Offline with your own vCenter
+
+Obviously you are welcome to run the commands above in your own lab!
 
 ### Part 4 - PowerCLI
 
@@ -123,3 +134,28 @@ It's the same if you want to get the contents of a vCenter, it will just be a GE
 When you submit a form online, you just make a HTTP POST request to submit your details.
 
 It's same when you want to create a network with NSX over the APIs: you just make a HTTP POST Call, with the details about your network (subnet, mask, DHCP settings) in the body of the packet.
+
+Let's go back to our VM and open POSTMAN.
+
+Postman is a great software to interact with any APIs. 
+One of the benefits of Postman is that you can save catalogs of API calls and share them externally.
+
+The vSphere APIs POSTMAN repo is actually available online and you can download it and start leveraging it.
+
+To leverage vSphere APIs, we could use cURL (a tool to make HTTP requests) but in this instance, let's use Postman.
+
+Go back to your virtual desktop and open up POSTMAN.
+
+You can see on the left-hand side all the collections of API calls we can make through POSTMAN.
+
+The way it works with the vSphere APIs is that you need to get a temporary token in exchange for your vCenter credentials with a 
+
+    POST https://{api_host}/rest/com/vmware/cis/session
+
+
+curl -X POST -H "vmware-use-header-authn: string" -H "Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=" https://{api_host}/rest/com/vmware/cis/session
+
+
+### Part 6 - Python
+
+### Part 7 - Terraform
