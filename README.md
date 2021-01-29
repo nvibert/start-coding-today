@@ -106,9 +106,59 @@ As you can see, the script will do the following:
 
 
 
-### Part 5 - APIs
+### Part 5 - Terraform
 
-PowerCLI is very easy to use as you can see. But what PowerCLI only does is making API calls under the hood.
+PowerCLI is the most commonly used VMware scripting tool and is pretty easy to pick up. It's commonly used for bulk tasks.
+
+An alternative to PowerCLI would be Terraform - the use case is different but it can achieve similar results.
+
+While PowerCLI's approach is to run a series of scripts to execute a task, Terraform's approach is to describe an entire infrastructure as code.
+
+PowerCLI is great for tasks and works great for brownfield and greenfield environments.
+Terraform is a great tool to build an entire templated infrastructure from scratch but works better in a greenfield environment.
+
+Terraform builds infrastructure based on code. For example, the following code would create a vSphere Tag Category.
+
+    resource "vsphere_tag_category" "region" {
+        name        = "region"
+        cardinality = "SINGLE"
+
+        associable_types = [
+        "VirtualMachine"
+        ]
+    }
+
+To create a tag using the category above, you would use the following command:
+
+    resource "vsphere_tag" "region" {
+        name         = "UK"
+        category_id = vsphere_tag_category.region.id
+    }
+
+You can see how, by using `vsphere_tag_category.region.id`, we are referring to another resource created by Terraform.
+
+One of the advantages about using Terraform is that it is able, in most cases, to work out dependencies between each resources. For example, in this instance, Terraform would create the Tag Category before creating the Tag.
+
+If you want to deploy a resource in something that was not created by Terraform, you can use the data block.
+
+Imagine you want to create a Folder in the Datacenter "SDDC-Datacenter". You would do the following.
+
+    resource "vsphere_folder" "folder" {
+    path          = "terraform-test-folder"
+    type          = "vm"
+    datacenter_id = data.vsphere_datacenter.dc.id
+    }
+
+    data "vsphere_datacenter" "dc" {
+    name = "SDDC-Datacenter" 
+    }
+
+"Data" is simple a read-only API call to work 
+
+
+### Part 6 - APIs
+
+PowerCLI and Terraform are very easy to use as you can see. But what PowerCLI and Terraform only do is making API calls under the hood.
 
 You will find easier to understand automation by building some understanding of API architectures.
 
@@ -156,6 +206,3 @@ The way it works with the vSphere APIs is that you need to get a temporary token
 curl -X POST -H "vmware-use-header-authn: string" -H "Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=" https://{api_host}/rest/com/vmware/cis/session
 
 
-### Part 6 - Python
-
-### Part 7 - Terraform
