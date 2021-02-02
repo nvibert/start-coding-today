@@ -31,19 +31,13 @@ It's hard to get started with coding without a use case, a mentor, an environmen
 
 This is a short session and this session is more of an introduction to coding for folks who have a background as infrastructure and virtualization administrators and would like to understand the 'art of the possible'. 
 
-### Part 2 - APIs
-
-// brief introduction to REST APIs
-// CRUD
-
-If you are on the live VMware training, access your virtual desktop
-### Part 3a - Live - Desktop Access
+### Part 2a - Live - Desktop Access
 
 Access your VDI session.
 
 Usernames and passwords will be provided in the Zoom session.
 
-### Part 3b - Offline with vcsim
+### Part 2b - Offline with vcsim
 
 Clone this GitHub repo to your machine. 
 It will include the vcsim.
@@ -52,11 +46,11 @@ It will include the vcsim.
     - Install Go
     - Install PowerShell if you don't have it already.
 
-### Part 3c - Offline with your own vCenter
+### Part 2c - Offline with your own vCenter
 
 Obviously you are welcome to run the commands above in your own lab!
 
-### Part 4 - PowerCLI
+### Part 3 - PowerCLI
 
 PowerCLI is one of the most common tools to automate tasks against a VMware environment. PowerCLI abstracts the API calls by providing a command-line interface tool that is self-explanatory.
 
@@ -106,7 +100,7 @@ As you can see, the script will do the following:
 
 
 
-### Part 5 - Terraform
+### Part 4 - Terraform
 
 PowerCLI is the most commonly used VMware scripting tool and is pretty easy to pick up. It's commonly used for bulk tasks.
 
@@ -153,14 +147,20 @@ Imagine you want to create a Folder in the Datacenter "SDDC-Datacenter". You wou
     name = "SDDC-Datacenter" 
     }
 
-"Data" is simple a read-only API call to work 
+"Data" is simple a read-only API call to work out the ID of the DC in which we will deploy the folder.
 
 
-### Part 6 - APIs
+### Part 5 - APIs
 
 PowerCLI and Terraform are very easy to use as you can see. But what PowerCLI and Terraform only do is making API calls under the hood.
 
 You will find easier to understand automation by building some understanding of API architectures.
+
+An API is an Application Programming Interface. Typically, a developer would create an API on an application or platform to enable a client to interact with it.
+
+Most of the API requests follow the REST model on how communications with an API are executed (REST stands for Representation State Transfer).
+
+Most common REST implementations use HTTP as the application protocol. 
 
 Typically, API calls run a CRUD Action: Create, Read, Update or Delete.
 
@@ -170,7 +170,7 @@ For example:
 - Update the vSAN storage policy on a VM
 - Remove a NSX network
 
-Most API requests are made through a HTML request, which would be:
+Typically REST API requests are made through a HTTP verb, which would be:
 
 - PUT   ===== CREATE
 - GET   ===== READ
@@ -192,17 +192,21 @@ One of the benefits of Postman is that you can save catalogs of API calls and sh
 
 The vSphere APIs POSTMAN repo is actually available online and you can download it and start leveraging it.
 
-To leverage vSphere APIs, we could use cURL (a tool to make HTTP requests) but in this instance, let's use Postman.
+To leverage vSphere APIs, let's use cURL. Curl is a tool to make HTTP requests and will let us interact with the APIs directly.
 
-Go back to your virtual desktop and open up POSTMAN.
-
-You can see on the left-hand side all the collections of API calls we can make through POSTMAN.
+Go back to your virtual desktop and open up the terminal.
 
 The way it works with the vSphere APIs is that you need to get a temporary token in exchange for your vCenter credentials with a 
 
     POST https://{api_host}/rest/com/vmware/cis/session
 
+For example:
 
-curl -X POST -H "vmware-use-header-authn: string" -H "Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=" https://{api_host}/rest/com/vmware/cis/session
+    curl  -X POST -k https://user:pass@127.0.0.1:8989/rest/com/vmware/cis/session
 
+The output of the command would be something like this:
+
+    {"value":"f3be0a4e-7fc8-48d8-b796-eb3c2f66970b"}
+
+This temporary token above `f3be0a4e-7fc8-48d8-b796-eb3c2f66970b` can be used in subsequent API requests to authenticate against vCenter.
 
