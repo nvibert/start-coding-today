@@ -39,7 +39,7 @@ This is a short session and this session is more of an introduction to coding fo
 If you are on the live VMware training, access your virtual desktop
 ### Part 3a - Live - Desktop Access
 
-Access your VDI session at this [URL](https://desktop.vmc.ninja)
+Access your VDI session.
 
 Usernames and passwords will be provided in the Zoom session.
 
