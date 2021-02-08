@@ -89,7 +89,7 @@ Great! You've just used some scripts to create vSphere resources over APIs. Yes,
 
 There are many PowerCLI sample scripts you can find on VMware {code} such as:
 
-[code_samples][https://code.vmware.com/samples?categories=Sample&keywords=&tags=PowerShell&groups=&filters=&sort=dateDesc&page=]
+[code_samples](https://code.vmware.com/samples?categories=Sample&keywords=&tags=PowerShell&groups=&filters=&sort=dateDesc&page=)
 
 Go and explore some of the commands.
 
