@@ -172,10 +172,10 @@ Update the file with your user_name. The configuration above will create a folde
 
 Run the following commands:
 
-`terraform init` to initialize the provider
-`terraform validate` to validate the syntax of your Terraform config file
-`terraform plan` to work out which resources Terraform will create, modify or delete on your behalf
-`terraform apply` to execute the plan. 
+`terraform init` to initialize the provider  
+`terraform validate` to validate the syntax of your Terraform config file  
+`terraform plan` to work out which resources Terraform will create, modify or delete on your behalf  
+`terraform apply` to execute the plan.  
 
 
 This is a very simple example. But imagine you add not just folders, but resources pools, clusters, tags, networks and security rules (using Terraform for NSX-T); you could define your entire VMware infrastructure as code. 
