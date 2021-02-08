@@ -89,7 +89,7 @@ Great! You've just used some scripts to create vSphere resources over APIs. Yes,
 
 There are many PowerCLI sample scripts you can find on VMware {code} such as:
 
-[code_samples](https://code.vmware.com/samples?categories=Sample&keywords=&tags=PowerShell&groups=&filters=&sort=dateDesc&page=)
+[PowerCLI code_samples](https://code.vmware.com/samples?categories=Sample&keywords=&tags=PowerShell&groups=&filters=&sort=dateDesc&page=)
 
 Go and explore some of the commands.
 
@@ -207,14 +207,7 @@ It's the same if you want to get the contents of a vCenter, it will just be a GE
 
 When you submit a form online, you just make a HTTP POST request to submit your details.
 
-It's same when you want to create a network with NSX over the APIs: you just make a HTTP POST Call, with the details about your network (subnet, mask, DHCP settings) in the body of the packet.
-
-Let's go back to our VM and open POSTMAN.
-
-Postman is a great software to interact with any APIs. 
-One of the benefits of Postman is that you can save catalogs of API calls and share them externally.
-
-The vSphere APIs POSTMAN repo is actually available online and you can download it and start leveraging it.
+It's same when you want to create a network with NSX over the APIs: you just make a HTTP POST call, with the details about your network (subnet, mask, DHCP settings) in the body of the packet.
 
 To leverage vSphere APIs, let's use cURL. Curl is a tool to make HTTP requests and will let us interact with the APIs directly.
 
@@ -224,13 +217,26 @@ The way it works with the vSphere APIs is that you need to get a temporary token
 
     POST https://{api_host}/rest/com/vmware/cis/session
 
-For example:
+For example, on a Mac:
 
-    curl  -X POST -k https://user:pass@127.0.0.1:8989/rest/com/vmware/cis/session
+    curl -k -i -u $TF_VAR_vsphere_user:$TF_VAR_vsphere_password -X POST -c token.txt https://$TF_VAR_vsphere_server/rest/com/vmware/cis/session
+
+On a Windows machine, it would be:
+
+    curl -k -i -u %TF_VAR_vsphere_user%:%TF_VAR_vsphere_password% -X POST -c token.txt https://%TF_VAR_vsphere_server%/rest/com/vmware/cis/session
 
 The output of the command would be something like this:
 
     {"value":"f3be0a4e-7fc8-48d8-b796-eb3c2f66970b"}
 
 This temporary token above `f3be0a4e-7fc8-48d8-b796-eb3c2f66970b` can be used in subsequent API requests to authenticate against vCenter.
+
+You can then use the value of the token to make an API call, for example, to get the list of VMs in your environment:
+
+On a Mac:
+    curl -k -i -b token.txt https://$TF_VAR_vsphere_server/rest/vcenter/vm
+
+On a Windows machine:
+    curl -k -i -b token.txt https://%TF_VAR_vsphere_server%/rest/vcenter/vm
+
 
