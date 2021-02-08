@@ -6,13 +6,13 @@ This session will be presented at the internal VMware conference TechSummit.
 
 ## Objectives
 
-In 25 minutes, attendees will be able to learn and practice coding.
+In 25 minutes, attendees will be able to learn and practice coding with a VMware environment, giving them a little taster of the power of automation.
 
 ## Requirements
 
 A browser with Internet access.
 
-That's it. No coding experience required. No need to get access to a vCenter as a simulated vCenter will be provided.
+That's it. No coding experience required.
 
 ## What the attendee will do during the session:
 
@@ -37,7 +37,7 @@ Access your VDI session.
 
 Usernames and passwords will be provided in the Zoom session.
 
-### Part 2b - Offline with vcsim
+### Part 2b - Offline with vcsim (WORK IN PROGRESS)
 
 Clone this GitHub repo to your machine. 
 It will include the vcsim.
