@@ -56,12 +56,14 @@ PowerCLI is one of the most common tools to automate tasks against a VMware envi
 
 Open the PowerShell windows and run the following command:
 
-    Connect-VIServer localhost -port 8989 -User Foo -Password Bar
+    Connect-VIServer -Server vcenter.sddc-A-B-C-D.vmwarevmc.com -Protocol https -User cloudadmin@vmc.local -Password 'qwerty'
     
-You are now connected to a simulated vCenter (we used a tool called govc and vcsim to save the configuration of a real vCenter and restore it).
+You are now connected to a VMware Cloud vCenter.
 
 Now that you are connected, you can run multiple PowerCLI commands, such as:
 
+    Get-VM
+    
     Get-VMHost
 
     Get-Folder
@@ -70,35 +72,26 @@ Now that you are connected, you can run multiple PowerCLI commands, such as:
 
     Get-Datastore
 
-
 You can run the following command to understand why cmdlets are supported:
 `
 Get-Command -Module *VMware*
 `
 
-As you are using a simulated vCenter, not all the commands will work. 
-But some do and we can even create new items in the simulated vCenter. Let's try to create a new folder inside an existing folder. One way to do this is to create a PowerShell variable, using the '$' prefix.
+Let's try to create a new folder inside an existing folder. One way to do this is to create a PowerShell variable, using the '$' prefix.
 
-    $VMFolder = Get-Folder -Type VM
+    $WorkloadsFolder = Get-Folder -Name Workloads
 
-Now you can refer to this variable in your next command:
+Now you can refer to this variable in your next command and create a sub-folder. Update the folder name with your own username.
 
-    New-Folder "MyFolder" -Location $VMFolder
+    New-Folder "your_user_name_power_cli_folder" -Location $WorkloadsFolder
 
 Great! You've just used some scripts to create vSphere resources over APIs. Yes, PowerCLI just executes some API calls under the hood but a lot of the complexity was hidden from you.
 
-You can combine multiple PowerCLI commands into a single PowerShell script and the script will run everything for you. 
+There are many PowerCLI sample scripts you can find on VMware {code} such as:
 
-Navigate to the Folder /blablablabla and open the file to_be_confirmed.ps1
+url[https://code.vmware.com/samples?categories=Sample&keywords=&tags=PowerShell&groups=&filters=&sort=dateDesc&page=]
 
-As you can see, the script will do the following:
-
-    - create this
-    - create that
-    - create that
-    - run some checks
-
-
+Go and explore some of the commands.
 
 ### Part 4 - Terraform
 
@@ -149,6 +142,37 @@ Imagine you want to create a Folder in the Datacenter "SDDC-Datacenter". You wou
 
 "Data" is simple a read-only API call to work out the ID of the DC in which we will deploy the folder.
 
+Let's go and practice some of this. Go to the Terraform folder.
+
+You will see a file called main.tf . This is the main Terraform configuration.
+
+
+    provider "vsphere" {
+    user                 = var.vsphere_user
+    password             = var.vsphere_password
+    vsphere_server       = var.vsphere_server
+    allow_unverified_ssl = true
+    }
+
+    data "vsphere_datacenter" "dc" {
+    name = "SDDC-Datacenter"
+    }
+
+    variable "vsphere_user" {}
+    variable "vsphere_password" {}
+    variable "vsphere_server" {}
+
+    resource "vsphere_folder" "folder" {
+    path          = "your_user_name_terraform_folder"
+    type          = "vm"
+    datacenter_id = data.vsphere_datacenter.dc.id
+    }
+
+Update the file with your user_name. The configuration above will create a folder.
+
+This is a very simple example. But imagine you add not just folders, but resources pools, clusters, tags, networks and security rules (using Terraform for NSX-T); you could define your entire VMware infrastructure as code. 
+
+You could then version it, repeat it, patch it, etc...
 
 ### Part 5 - APIs
 
