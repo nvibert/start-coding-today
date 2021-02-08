@@ -215,15 +215,15 @@ Go back to your virtual desktop and open up the terminal.
 
 The way it works with the vSphere APIs is that you need to get a temporary token in exchange for your vCenter credentials with a 
 
-    POST https://{api_host}/rest/com/vmware/cis/session
+`POST https://{api_host}/rest/com/vmware/cis/session`
 
 For example, on a Mac:
 
-    curl -k -i -u $TF_VAR_vsphere_user:$TF_VAR_vsphere_password -X POST -c token.txt https://$TF_VAR_vsphere_server/rest/com/vmware/cis/session
+`curl -k -i -u $TF_VAR_vsphere_user:$TF_VAR_vsphere_password -X POST -c token.txt https://$TF_VAR_vsphere_server/rest/com/vmware/cis/session`
 
 On a Windows machine, it would be:
 
-    curl -k -i -u %TF_VAR_vsphere_user%:%TF_VAR_vsphere_password% -X POST -c token.txt https://%TF_VAR_vsphere_server%/rest/com/vmware/cis/session
+`curl -k -i -u %TF_VAR_vsphere_user%:%TF_VAR_vsphere_password% -X POST -c token.txt https://%TF_VAR_vsphere_server%/rest/com/vmware/cis/session`
 
 The output of the command would be something like this:
 
@@ -234,9 +234,11 @@ This temporary token above `f3be0a4e-7fc8-48d8-b796-eb3c2f66970b` can be used in
 You can then use the value of the token to make an API call, for example, to get the list of VMs in your environment:
 
 On a Mac:
-    curl -k -i -b token.txt https://$TF_VAR_vsphere_server/rest/vcenter/vm
+
+`curl -k -i -b token.txt https://$TF_VAR_vsphere_server/rest/vcenter/vm`
 
 On a Windows machine:
-    curl -k -i -b token.txt https://%TF_VAR_vsphere_server%/rest/vcenter/vm
+
+`curl -k -i -b token.txt https://%TF_VAR_vsphere_server%/rest/vcenter/vm`
 
 
