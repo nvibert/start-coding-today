@@ -56,34 +56,42 @@ PowerCLI is one of the most common tools to automate tasks against a VMware envi
 
 Open the PowerShell windows and run the following command:
 
-    Connect-VIServer -Server vcenter.sddc-A-B-C-D.vmwarevmc.com -Protocol https -User cloudadmin@vmc.local -Password 'qwerty'
+```powershell
+Connect-VIServer -Server vcenter.sddc-A-B-C-D.vmwarevmc.com -Protocol https -User cloudadmin@vmc.local -Password 'qwerty'
+```
     
 You are now connected to a VMware Cloud vCenter.
 
 Now that you are connected, you can run multiple PowerCLI commands, such as:
 
-    Get-VM
-    
-    Get-VMHost
+```powershell
+Get-VM
 
-    Get-Folder
+Get-VMHost
 
-    Get-Datacenter
+Get-Folder
 
-    Get-Datastore
+Get-Datacenter
+
+Get-Datastore
+```
 
 You can run the following command to understand why cmdlets are supported:
-`
+```powershell
 Get-Command -Module *VMware*
-`
+```
 
 Let's try to create a new folder inside an existing folder. One way to do this is to create a PowerShell variable, using the '$' prefix.
 
-    $WorkloadsFolder = Get-Folder -Name Workloads
+```powershell
+$WorkloadsFolder = Get-Folder -Name Workloads
+```
 
 Now you can refer to this variable in your next command and create a sub-folder. Update the folder name with your own username.
 
-    New-Folder "your_user_name_power_cli_folder" -Location $WorkloadsFolder
+```powershell
+New-Folder "your_user_name_power_cli_folder" -Location $WorkloadsFolder
+```
 
 Great! You've just used some scripts to create vSphere resources over APIs. Yes, PowerCLI just executes some API calls under the hood but a lot of the complexity was hidden from you.
 
