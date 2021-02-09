@@ -114,7 +114,8 @@ An alternative to PowerCLI would be Terraform - the use case is different but it
 
 While PowerCLI's approach is to run a series of scripts to execute a task, Terraform's approach is to describe an entire infrastructure as code.
 
-PowerCLI is great for tasks and works great for brownfield and greenfield environments.
+PowerCLI is great for tasks and works great for brownfield and greenfield environments. It's particularly useful for Windows workloads and for users with a Windows background!
+
 Terraform is a great tool to build an entire templated infrastructure from scratch but works better in a greenfield environment.
 
 Terraform builds infrastructure based on code. For example, the following code would create a vSphere Tag Category.
@@ -258,15 +259,15 @@ The output of the command would be something like this:
 
 This temporary token above `f3be0a4e-7fc8-48d8-b796-eb3c2f66970b` can be used in subsequent API requests to authenticate against vCenter.
 
-You can then use the value of the token to make an API call, for example, to get the list of VMs in your environment:
+You can then use the value of the token to make an API call, for example, to get the list of folders in your environment (that will include the folders you created earlier):
 
 On a Mac:
 
-`curl -k -i -b token.txt https://$TF_VAR_vsphere_server/rest/vcenter/vm`
+`curl -k -i -b token.txt https://$TF_VAR_vsphere_server/rest/vcenter/folder`
 
 On a Windows machine:
 
-`curl -k -i -b token.txt https://%TF_VAR_vsphere_server%/rest/vcenter/vm`
+`curl -k -i -b token.txt https://%TF_VAR_vsphere_server%/rest/vcenter/folder`
 
 
 ### Additional Resources
