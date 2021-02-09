@@ -18,8 +18,7 @@ That's it. No coding experience required.
 
 * Learn the basic concepts behind REST APIs
 * Run a PowerCLI script against a vCenter
-* Run API calls with Postman against a vCenter
-* Execute an API call with Python against a vCenter
+* Run API calls with Curl against a vCenter
 * Deploy VMware resources with Terraform
 
 ## Session Structure
