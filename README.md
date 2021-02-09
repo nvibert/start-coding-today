@@ -54,6 +54,9 @@ Obviously you are welcome to run the commands above in your own lab!
 
 PowerCLI is one of the most common tools to automate tasks against a VMware environment. PowerCLI abstracts the API calls by providing a command-line interface tool that is self-explanatory.
 
+PowerCLI is a collection of Windows Powershell modules which are used to manage and maintain a VMware virtual environment. 
+PowerCLI is a great tool for system administrators and can be used to gather detailed information and/or execute bulk commands against multiple VMs, Hosts, Network or Storage devices.
+
 Open the PowerShell windows and run the following command:
 
 ```powershell
@@ -62,7 +65,7 @@ Connect-VIServer -Server vcenter.sddc-A-B-C-D.vmwarevmc.com -Protocol https -Use
     
 You are now connected to a VMware Cloud vCenter.
 
-Now that you are connected, you can run multiple PowerCLI commands, such as:
+Now that you are connected, you can run multiple PowerCLI commands, such as the following. Note how you can use Tab to auto-complete the commands.
 
 ```powershell
 Get-VM
@@ -92,6 +95,8 @@ Now you can refer to this variable in your next command and create a sub-folder.
 ```powershell
 New-Folder "your_user_name_power_cli_folder" -Location $WorkloadsFolder
 ```
+
+By now, you should know how to check if your folder has been successfully created. Can you find out the UID of the new folder?
 
 Great! You've just used some scripts to create vSphere resources over APIs. Yes, PowerCLI just executes some API calls under the hood but a lot of the complexity was hidden from you.
 
@@ -268,11 +273,9 @@ On a Windows machine:
 
 PowerCLI resources can be found [here](https://developer.vmware.com/powercli).
 
-The Curl script used above was found [here](https://www.stevetrefethen.com/accessing-vmware-vcenter-rest-api-authentication-from-curl/).
-
 Official Terraform providers can be found [here](https://registry.terraform.io/namespaces/vmware).
 
 Additional Terraform scripts and examples can be found on Nico's blog [here](https://nicovibert.com).
 
-
+The Curl script used above was found [here](https://www.stevetrefethen.com/accessing-vmware-vcenter-rest-api-authentication-from-curl/).
 
