@@ -146,7 +146,7 @@ Let's go and practice some of this. Go to the Terraform folder.
 
 You will see a file called main.tf . This is the main Terraform configuration.
 
-
+```hcl
     provider "vsphere" {
     user                 = var.vsphere_user
     password             = var.vsphere_password
@@ -157,7 +157,7 @@ You will see a file called main.tf . This is the main Terraform configuration.
     data "vsphere_datacenter" "dc" {
     name = "SDDC-Datacenter"
     }
-
+```
     variable "vsphere_user" {}
     variable "vsphere_password" {}
     variable "vsphere_server" {}
