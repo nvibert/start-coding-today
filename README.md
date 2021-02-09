@@ -264,3 +264,15 @@ On a Windows machine:
 `curl -k -i -b token.txt https://%TF_VAR_vsphere_server%/rest/vcenter/vm`
 
 
+### Additional Resources
+
+PowerCLI resources can be found [here](https://developer.vmware.com/powercli).
+
+The Curl script used above was found [here](https://www.stevetrefethen.com/accessing-vmware-vcenter-rest-api-authentication-from-curl/).
+
+Official Terraform providers can be found [here](https://registry.terraform.io/namespaces/vmware).
+
+Additional Terraform scripts and examples can be found on Nico's blog [here](https://nicovibert.com).
+
+
+
