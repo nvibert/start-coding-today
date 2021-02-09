@@ -106,21 +106,25 @@ Terraform is a great tool to build an entire templated infrastructure from scrat
 
 Terraform builds infrastructure based on code. For example, the following code would create a vSphere Tag Category.
 
-    resource "vsphere_tag_category" "region" {
-        name        = "region"
-        cardinality = "SINGLE"
+```hcl
+resource "vsphere_tag_category" "region" {
+    name        = "region"
+    cardinality = "SINGLE"
 
-        associable_types = [
-        "VirtualMachine"
-        ]
-    }
+    associable_types = [
+    "VirtualMachine"
+    ]
+}
+```
 
 To create a tag using the category above, you would use the following command:
 
-    resource "vsphere_tag" "region" {
-        name         = "UK"
-        category_id = vsphere_tag_category.region.id
-    }
+```hcl
+resource "vsphere_tag" "region" {
+    name         = "UK"
+    category_id = vsphere_tag_category.region.id
+}
+```
 
 You can see how, by using `vsphere_tag_category.region.id`, we are referring to another resource created by Terraform.
 
@@ -130,15 +134,17 @@ If you want to deploy a resource in something that was not created by Terraform,
 
 Imagine you want to create a Folder in the Datacenter "SDDC-Datacenter". You would do the following.
 
-    resource "vsphere_folder" "folder" {
-    path          = "terraform-test-folder"
-    type          = "vm"
-    datacenter_id = data.vsphere_datacenter.dc.id
-    }
+```hcl
+resource "vsphere_folder" "folder" {
+path          = "terraform-test-folder"
+type          = "vm"
+datacenter_id = data.vsphere_datacenter.dc.id
+}
 
-    data "vsphere_datacenter" "dc" {
-    name = "SDDC-Datacenter" 
-    }
+data "vsphere_datacenter" "dc" {
+name = "SDDC-Datacenter" 
+}
+```
 
 "Data" is simple a read-only API call to work out the ID of the DC in which we will deploy the folder.
 
@@ -147,26 +153,26 @@ Let's go and practice some of this. Go to the Terraform folder.
 You will see a file called main.tf . This is the main Terraform configuration.
 
 ```hcl
-    provider "vsphere" {
-    user                 = var.vsphere_user
-    password             = var.vsphere_password
-    vsphere_server       = var.vsphere_server
-    allow_unverified_ssl = true
-    }
+provider "vsphere" {
+user                 = var.vsphere_user
+password             = var.vsphere_password
+vsphere_server       = var.vsphere_server
+allow_unverified_ssl = true
+}
 
-    data "vsphere_datacenter" "dc" {
-    name = "SDDC-Datacenter"
-    }
+data "vsphere_datacenter" "dc" {
+name = "SDDC-Datacenter"
+}
+variable "vsphere_user" {}
+variable "vsphere_password" {}
+variable "vsphere_server" {}
+
+resource "vsphere_folder" "folder" {
+path          = "your_user_name_terraform_folder"
+type          = "vm"
+datacenter_id = data.vsphere_datacenter.dc.id
+}
 ```
-    variable "vsphere_user" {}
-    variable "vsphere_password" {}
-    variable "vsphere_server" {}
-
-    resource "vsphere_folder" "folder" {
-    path          = "your_user_name_terraform_folder"
-    type          = "vm"
-    datacenter_id = data.vsphere_datacenter.dc.id
-    }
 
 Update the file with your user_name. The configuration above will create a folder.
 
