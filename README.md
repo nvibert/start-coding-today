@@ -21,9 +21,9 @@ That's it. No coding experience required.
 * Run API calls with Curl against a vCenter
 * Deploy VMware resources with Terraform
 
-## Session Structure
+## Session Structure
 
-### Part 1 - Introduction
+### Part 1 - Introduction
 
 Welcome to the session. This session is for anyone who's never had the confidence or the motivation to learn to code. 
 It's hard to get started with coding without a use case, a mentor, an environment you can learn and a safe place where there's no stupid questions.
