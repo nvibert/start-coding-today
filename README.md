@@ -199,7 +199,30 @@ Run the following commands:
 
 This is a very simple example. But imagine you add not just folders, but resources pools, clusters, tags, networks and security rules (using Terraform for NSX-T); you could define your entire VMware infrastructure as code. 
 
+If you're enjoying Terraform and want to do something a bit more sophisticated, you could try to create vSphere tags and categories. Add this to your main.tf, run `terraform apply` and you will see that Terraform doesn't try to add another folder. Instead, it will just create the tag category and the tag.
+
+```hcl
+resource "vsphere_tag_category" "user" {
+    name        = "your_user_name"
+    cardinality = "SINGLE"
+
+    associable_types = [
+        "VirtualMachine"
+    ]
+}
+resource "vsphere_tag" "last_name" {
+    name         = "your_last_name"
+    category_id = vsphere_tag_category.user.id
+}
+```
+
+As you expand your code and your configuration, you can see how you could describe your entire infrastructure as code - not just compute but also security, networking, automation, cloud, migration, SD-WAN when you include providers for AWS, NSX, SD-WAN, HCX, vRA, etc.... 
 You could then version it, repeat it, patch it, etc...
+
+If you want to see a very advanced example, go through what Gilles and I did for VMworld:
+https://github.com/gchek/VMworld2020
+
+
 
 ### Part 5 - APIs
 
