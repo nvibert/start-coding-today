@@ -105,6 +105,9 @@ There are many PowerCLI sample scripts you can find on VMware {code} such as:
 
 Go and explore some of the commands.
 
+As you will see as you go through the examples, you will see that PowerCLI is not just for vSphere: there are modules for NSX-T, Horizon, vRealize, etc...
+If you see a product without a PowerCLI module...well, what is stopping you from creating the module?
+
 ### Part 4 - Terraform
 
 PowerCLI is the most commonly used VMware scripting tool and is pretty easy to pick up. It's commonly used for bulk tasks.
@@ -191,7 +194,7 @@ Update the file with your user_name. The configuration above will create a folde
 
 Run the following commands:
 
-`terraform init` to initialize the provider  
+`terraform init` to initialize the provider. Did you see "provider vsphere" in the configuration earlier? This tells Terraform to download a Terraform 'plugin' to let interact with vSphere. There are also providers for NSX-T, VMC, vRA, vCD, etc...
 `terraform validate` to validate the syntax of your Terraform config file  
 `terraform plan` to work out which resources Terraform will create, modify or delete on your behalf  
 `terraform apply` to execute the plan.  
@@ -222,7 +225,8 @@ You could then version it, repeat it, patch it, etc...
 If you want to see a very advanced example, go through what Gilles and I did for VMworld:
 https://github.com/gchek/VMworld2020
 
-
+Finally: if you think that there is a provider missing for the product of your choice, let us know. 
+Creating a provider is for advanced users as it required knowledge of the Go programming language but you know what? There are many Go programmers within VMware that can help you.
 
 ### Part 5 - APIs
 
