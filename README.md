@@ -299,6 +299,10 @@ On a Windows machine:
 
 `curl -k -i -b token.txt https://%TF_VAR_vsphere_server%/rest/vcenter/folder`
 
+### End or rather the Beginning?
+
+Wow - well done for getting so far. I hope you found the session useful. If you're interested, come and join our internal vCoders group:
+https://via.vmw.com/vCoderRegisterInterest
 
 ### Additional Resources
 
