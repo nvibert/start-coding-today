@@ -301,7 +301,9 @@ On a Windows machine:
 
 ### End or rather the Beginning?
 
-Wow - well done for getting so far. I hope you found the session useful. If you're interested, come and join our internal vCoders group:
+Wow - well done for getting so far. We hope you found the session useful.  
+If you're interested, come and join our internal vCoders group:
+
 https://via.vmw.com/vCoderRegisterInterest
 
 ### Additional Resources
