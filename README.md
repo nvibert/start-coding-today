@@ -164,33 +164,37 @@ name = "SDDC-Datacenter"
 
 "Data" is simple a read-only API call to work out the ID of the DC in which we will deploy the folder.
 
-Let's go and practice some of this. Go to the Terraform folder.
+Let's go and practice some of this. Go to Visual Studio Code and open the Terminal.
 
-You will see a file called main.tf . This is the main Terraform configuration.
+Clone this GitHub repo, using the command:
+
+`git clone https://github.com/nvibert/start-coding-today.git`
+
+If it's your first time using Git, well done!
+
+You will see we have now download a file called main.tf . This is the main Terraform configuration.
 
 ```hcl
 provider "vsphere" {
-user                 = var.vsphere_user
-password             = var.vsphere_password
-vsphere_server       = var.vsphere_server
-allow_unverified_ssl = true
+  user                 = "cloudadmin@vmc.local"
+  password             = ""
+  vsphere_server       = "vcenter.sddc-A-B-C-D.vmwarevmc.com"
+  allow_unverified_ssl = true
 }
 
 data "vsphere_datacenter" "dc" {
-name = "SDDC-Datacenter"
+  name = "SDDC-Datacenter"
 }
-variable "vsphere_user" {}
-variable "vsphere_password" {}
-variable "vsphere_server" {}
+
 
 resource "vsphere_folder" "folder" {
-path          = "your_user_name_terraform_folder"
-type          = "vm"
-datacenter_id = data.vsphere_datacenter.dc.id
+  path          = "your_user_name_terraform_folder"
+  type          = "vm"
+  datacenter_id = data.vsphere_datacenter.dc.id
 }
 ```
 
-Update the file with your user_name. The configuration above will create a folder.
+Update the file with the password, the vCenter IP address and the user_name. The configuration above will create a folder.
 
 Run the following commands:
 
