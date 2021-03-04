@@ -21,6 +21,10 @@ $MAX_ITERATIONS = 120
 $SLEEP_INTERVAL_IN_SECONDS = 5
 
 $numIterations = 1
+
+# Store the last message posted to Slack outside the scope of the loop, to detect change from one iteration to the next
+$previousValues = ''
+
 while ( $numIterations -le $MAX_ITERATIONS )
 {
     Write-Host "Iteration" $numIterations "of" $MAX_ITERATIONS
@@ -36,21 +40,24 @@ while ( $numIterations -le $MAX_ITERATIONS )
             write-Host $vm.Name $vm.NamesData.UserName $vm.BasicState 
         }
     }
-    $curTime = Get-Date
-    $msg = $curTime.toString() + " - Pool '" + $poolName + "' connected desktops: " + $connectedVMs + " of " + $totalVMs
+    $values = "Pool '" + $poolName + "' connected desktops: " + $connectedVMs + " of " + $totalVMs
+    $msg = "$(Get-Date) - $values"
     Write-Host $msg
     $body = ConvertTo-Json @{
         text = $msg
     }
 
-    # Post via Slack webhook
-    try {
-        Invoke-RestMethod -uri $slackWebhook -Method Post -body $body -ContentType 'application/json' 
-    } catch {
-        Write-Host "Unable to invoke webhook"
+    # Post via Slack webhook if something has changed since the last iteration
+    if ($previousValues -ne $values) {
+        try {
+            Invoke-RestMethod -uri $slackWebhook -Method Post -body $body -ContentType 'application/json' 
+        } catch {
+            Write-Host "Unable to invoke webhook"
+        }
     }
 
     $numIterations += 1
+    $previousValues = $values
     Write-Host "Sleeping..."
     Start-Sleep $SLEEP_INTERVAL_IN_SECONDS
 }
