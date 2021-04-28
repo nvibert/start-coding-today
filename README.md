@@ -1,12 +1,12 @@
 # Start Coding Today 
 
-## 2021 VMware TechSummit Session
+## Introduction to API calls
 Co-presented by Patrick Kremer and Nico Vibert.
 This session will be presented at the internal VMware conference TechSummit.
 
 ## Objectives
 
-In 25 minutes, attendees will be able to learn and practice coding with a VMware environment, giving them a little taster of the power of automation.
+In 45 minutes, attendees will be able to learn and practice coding with a VMware environment, giving them a little taste of the power of automation.
 
 ## Requirements
 
@@ -20,6 +20,7 @@ That's it. No coding experience required.
 * Run a PowerCLI script against a vCenter
 * Run API calls with Curl against a vCenter
 * Deploy VMware resources with Terraform
+* Invoke REST APIs with Python
 
 ## Session Structure
 
@@ -232,7 +233,7 @@ https://github.com/gchek/VMworld2020
 Finally: if you think that there is a provider missing for the product of your choice, let us know. 
 Creating a provider is for advanced users as it required knowledge of the Go programming language but you know what? There are many Go programmers within VMware that can help you.
 
-### Part 5 - APIs
+### Part 5 - REST APIs
 
 PowerCLI and Terraform are very easy to use as you can see. But what PowerCLI and Terraform only do is making API calls under the hood.
 
@@ -299,12 +300,29 @@ On a Windows machine:
 
 `curl -k -i -b token.txt https://%TF_VAR_vsphere_server%/rest/vcenter/folder`
 
-### End or rather the Beginning?
+### Part 6 - REST APIs in Python
 
-Wow - well done for getting so far. We hope you found the session useful.  
-If you're interested, come and join our internal vCoders group:
+cURL is great for testing REST APIs, but to truly use the API you will need to use a programming language.
 
-https://via.vmw.com/vCoderRegisterInterest
+Open [vcenter-REST.py](python/vcenter-REST.py)
+
+This program makes the same API calls that we did with cURL. 
+
+Fill in the environment variables with your vCenter username, password, and URL
+```
+# Environment variables
+VC_USERNAME = 'cloudadmin@vmc.local'
+VC_PASSWORD = 'KNQj6ljvT+FL*6c'
+VC_URL = 'https://vcenter.sddc-35-81-65-75.vmwarevmc.com'
+```
+Execute the program:
+
+`python vcenter-REST.py`
+
+Inspect the code and the output. 
+
+Now, try to write a GET call to list the hosts in your vCenter
+If you need help, the code to do it is in vcenter-REST-host.py(python/vcenter-REST-host.py)
 
 ### Additional Resources
 
