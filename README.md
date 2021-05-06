@@ -312,8 +312,8 @@ Fill in the environment variables with your vCenter username, password, and URL
 ```
 # Environment variables
 VC_USERNAME = 'cloudadmin@vmc.local'
-VC_PASSWORD = 'KNQj6ljvT+FL*6c'
-VC_URL = 'https://vcenter.sddc-35-81-65-75.vmwarevmc.com'
+VC_PASSWORD = ''
+VC_URL = ''
 ```
 Execute the program:
 
