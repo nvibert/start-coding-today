@@ -2,7 +2,7 @@ import requests
 import json
 
 # Environment variables
-VC_USERNAME = 'cloudadmin@vmc.local'
+VC_USERNAME = ''
 VC_PASSWORD = ''
 VC_URL = ''
 
@@ -18,7 +18,7 @@ if DEBUG_MODE:
     print('Session token URL:',vc_session_url)
 
 # Invoke the API to retrieve a session token
-response = requests.post(vc_session_url,headers=SESSION_HEADER,auth=(VC_USERNAME,VC_PASSWORD))
+response = requests.post(vc_session_url,headers=SESSION_HEADER,auth=(VC_USERNAME,VC_PASSWORD),verify=False)
 if DEBUG_MODE:
     print ('Session response status: ', response.status_code)
 
@@ -45,7 +45,7 @@ if DEBUG_MODE:
     print('FOLDER URL:', vc_folder_url)
 
 # Invoke the API to list folders
-response = requests.get(vc_folder_url,headers=GET_HEADER)
+response = requests.get(vc_folder_url,headers=GET_HEADER,verify=False)
 if DEBUG_MODE:
     print ('Folder response status: ', response.status_code)
 
