@@ -33,8 +33,8 @@ response = requests.get(url,headers=seg_list_headers)
 # Retrieve the JSON response
 seg_json = response.json()
 if DEBUG_MODE:
-    print('\nRaw Org JSON:', seg_json)
-    print('\nFormatted Org JSON',json.dumps(seg_json,indent=2))
+    print('\nRaw Seg JSON:', seg_json)
+    print('\nFormatted Seg JSON',json.dumps(seg_json,indent=2))
     # This code writes the JSON to a file for easier reading
     with open('seg.json','w') as outfile:
         json.dump(seg_json,outfile,indent=2)
