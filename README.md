@@ -33,22 +33,23 @@ This is a short session and this session is more of an introduction to coding fo
 
 ### Part 2a - Live - Desktop Access
 
-Access your VDI session.
+For VMware attendees, access your VDI session. Usernames and passwords will be provided in the Zoom session.
 
-Usernames and passwords will be provided in the Zoom session.
-
-### Part 2b - Offline with vcsim (WORK IN PROGRESS)
-
-Clone this GitHub repo to your machine. 
-It will include the vcsim.
-
-    - Install Postman
-    - Install Go
-    - Install PowerShell if you don't have it already.
-
-### Part 2c - Offline with your own vCenter
+### Part 2b - Offline with your own vCenter
 
 Obviously you are welcome to run the commands above in your own lab!
+
+You will need to install:
+- [Python3](https://wiki.python.org/moin/BeginnersGuide/Download)
+- [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
+- [PowerShell](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.1)
+- [PowerCLI](https://code.vmware.com/docs/13638/powercli-12-3-0-user-s-guide/GUID-ACD2320C-D00F-4CCE-B968-B3C41A95C085.html)
+
+You also need a code editor. [VS Code](https://code.visualstudio.com/download) is free and cross-platform. 
+
+If you want to start learning Git, which we strongly recommend if you're going to learn about code, you can [install it](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git). You can then clone this code repo with `git clone https://github.com/nvibert/start-coding-today.git`
+
+Alternatively, you can download the code in zip format from the [repo](https://github.com/nvibert/start-coding-today) ![](img/github-zip.png)
 
 ### Part 3 - PowerCLI
 
